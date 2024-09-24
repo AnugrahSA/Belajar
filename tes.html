@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Font Awesome (Optional, if needed) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-item .label {
+        display: none; /* Hide the label by default */
+        position: absolute;
+        top: 35px; /* Adjust this value to control the vertical distance */
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 100;
+      }
+
+      .nav-item:hover .label {
+        display: block;
+        top: 35px;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0);
+        z-index: 1000;
+        padding: 45px 30px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      header a.active i {
+        background-image: url("../assets/icon-active.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 25px;
+        display: inline-block;
+        width: 50px; /* Adjust the width based on your icon size */
+        height: 50px; /* Adjust the height based on your icon size */
+        color: transparent; /* Hide the original icon color */
+      }
+
+      header nav a i {
+        width: 50px;
+        height: 50px;
+        font-size: 30px; /* Adjust font size to fit inside the 50x50 container */
+      }
+
+      header a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        transition: background 0.3s;
+      }
+
+      header a:hover {
+        color: black;
+      }
+
+      section {
+        height: 300vh;
+        background: url(../assets/wukong-close.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      section.section2 {
+        height: 350vh;
+        background: url(../assets/bg2.png);
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      section.section3 {
+        height: 300vh;
+        background: url(../assets/bg2.png);
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      .layer {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: rgb(23 23 23);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+      }
+
+      .layer h1,
+      .layer h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+        background-image: url(../assets/kong.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .layer h1 {
+        font-size: 12em;
+      }
+
+      .layer h2 {
+        font-size: 6em;
+      }
+
+      section .info .gambar {
+        position: absolute;
+      }
+
+      section .bg .gambar {
+        position: absolute;
+      }
+      section .bg .gambar2 {
+        margin-top: 100vh;
+        position: absolute;
+      }
+      section .bg .gambar3 {
+        margin-top: 200vh;
+        position: absolute;
+      }
+
+      section .bg img {
+        width: 100%;
+      }
+
+      section img {
+        width: 100%;
+      }
+
+      .bg .bagian1 h1 {
+        margin-top: 25vh;
+        margin-left: 30vh;
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+      }
+      .bg .bagian2 h1 {
+        margin-top: 125vh;
+        margin-left: 30vh;
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+      }
+      .bg .bagian3 h1 {
+        margin-top: 225vh;
+        margin-left: 130vh;
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+      }
+
+      .bg .bagian1 h3 {
+        margin-top: 45vh;
+        margin-left: 30vh;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 25px;
+        font-weight: lighter;
+        color: white;
+      }
+
+      .bg .bagian2 h3 {
+        margin-top: 145vh;
+        margin-left: 30vh;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 25px;
+        font-weight: lighter;
+        color: white;
+      }
+      .bg .bagian3 h3 {
+        margin-top: 245vh;
+        margin-left: 130vh;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 25px;
+        font-weight: lighter;
+        color: white;
+      }
+
+      .bg .bagian1 iframe {
+        margin-top: 65vh;
+        margin-left: 30vh;
+      }
+
+      .bg .bagian2 iframe {
+        margin-top: 165vh;
+        margin-left: 30vh;
+      }
+      .bg .bagian3 iframe {
+        margin-top: 265vh;
+        margin-left: 130vh;
+      }
+
+      .info {
+        display: flex;
+      }
+
+      .btn {
+        margin-top: 100px;
+        height: 500px;
+        width: 80px;
+        background-color: rgba(0, 0, 0, 0.577);
+      }
+
+      .card {
+        width: 100%;
+        display: flex;
+        margin-top: 100px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        background-image: url(../assets/bg.png);
+        background-size: 160%; /* Menutupi seluruh elemen */
+        background-position: center; /* Memusatkan gambar */
+        background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+      }
+
+      .deskripsi {
+        max-width: 415px;
+      }
+
+      .card p {
+        margin-top: 100px;
+        font-size: 36px;
+        font-weight: bolder;
+        color: goldenrod;
+      }
+
+      .deskripsi p {
+        font-size: 12px;
+      }
+
+      .info-img {
+        height: 500px;
+        width: 45%;
+      }
+
+      i {
+        color: white;
+      }
+
+      .red-text {
+        color: red; /* Mengubah warna teks menjadi merah */
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+    <title>Monkey King</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#home" data-target="home" class="nav-item">
+          <i class="bi bi-cloud-fill"></i>
+          <span class="label">Home</span>
+        </a>
+        <a href="#game" data-target="game" class="nav-item">
+          <i class="bi bi-cloud-fill"></i>
+          <span class="label">Overview</span>
+        </a>
+        <a href="#information" data-target="information" class="nav-item">
+          <i class="bi bi-cloud-fill"></i>
+          <span class="label">Information</span>
+        </a>
+      </nav>
+    </header>
+    <!-- Audio element for background music -->
+    <audio id="background-music" autoplay loop>
+      <source src="../assets/main.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <section id="home"></section>
+
+    <div class="layer">
+      <h2>BLACK MYTH</h2>
+      <h1>WUKONG</h1>
+    </div>
+
+    <section id="game" class="section2">
+      <div class="bg">
+        <div class="bagian1">
+          <img src="../assets/bg.png" alt="background" class="gambar" />
+          <img src="../assets/main1.png" alt="main" class="gambar" />
+          <h1 class="gambar">Lorem Ipsum</h1>
+          <h3 class="gambar">
+            Lorem ipsum <span class="red-text">dolor sit amet </span><br />
+            consectetur adipisicing <span class="red-text">elit,</span>
+            Vitae saepe quaerat qui.
+          </h3>
+          <iframe
+            width="460"
+            height="215"
+            src="https://www.youtube.com/embed/Cr5rQ1NZ0Tw?si=Tg63SUhLVk5NUMAK&amp;start=7"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="gambar"
+          ></iframe>
+        </div>
+        <div class="bagian2">
+          <img src="../assets/bg3.png" alt="background" class="gambar2" />
+          <img src="../assets/main2.png" alt="background" class="gambar2" />
+          <h1 class="gambar2">Lorem Ipsum</h1>
+          <h3 class="gambar2">
+            Lorem ipsum <span class="red-text">dolor sit amet </span><br />
+            consectetur adipisicing <span class="red-text">elit,</span> <br />
+            Vitae saepe <span class="red-text">quaerat</span> qui.
+          </h3>
+          <iframe
+            width="460"
+            height="215"
+            src="https://www.youtube.com/embed/u83VdXAVq08?si=D7Lyy4SwWvd2atLm&amp;start=7"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="gambar2"
+          ></iframe>
+        </div>
+        <div class="bagian3">
+          <img src="../assets/bg4.png" alt="background" class="gambar3" />
+          <img src="../assets/main3.png" alt="background" class="gambar3" />
+          <h1 class="gambar3">Lorem Ipsum</h1>
+          <h3 class="gambar3">
+            Lorem ipsum <span class="red-text">dolor sit amet </span><br />
+            consectetur adipisicing <span class="red-text">elit,</span> <br />
+            Vitae saepe <span class="red-text">quaerat</span> qui.
+          </h3>
+          <iframe
+            width="460"
+            height="215"
+            src="https://www.youtube.com/embed/F6yfej-uzYI?si=lmMwdQa0UUPll7QF&amp;start=7"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="gambar3"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="information" class="section3">
+      <div class="info">
+        <button class="btn" style="margin-left: 210px">
+          <i class="bi bi-caret-left-fill"></i>
+        </button>
+        <div id="card-wukong" class="card">
+          <img src="../assets/main4.png" alt="wukong" class="info-img" />
+          <div class="penjelasan">
+            <p class="name">Sun Wukong</p>
+            <div class="deskripsi">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium aspernatur odit magni sunt odio! Dolore consequuntur
+                molestiae qui omnis, quisquam, ab ipsam distinctio nihil
+                debitis, praesentium sapiente neque esse suscipit?
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="card-bajie" class="card hidden">
+          <img src="../assets/bajie.png" alt="bajie" class="info-img" />
+          <div class="penjelasan">
+            <p class="name">Zhu Bajie</p>
+            <div class="deskripsi">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium aspernatur odit magni sunt odio! Dolore consequuntur
+                molestiae qui omnis, quisquam, ab ipsam distinctio nihil
+                debitis, praesentium sapiente neque esse suscipit?
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="card-violet" class="card hidden">
+          <img src="../assets/violet.png" alt="violet" class="info-img" />
+          <div class="penjelasan">
+            <p class="name">Violet Spider</p>
+            <div class="deskripsi">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium aspernatur odit magni sunt odio! Dolore consequuntur
+                molestiae qui omnis, quisquam, ab ipsam distinctio nihil
+                debitis, praesentium sapiente neque esse suscipit?
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" style="margin-right: 210px">
+          <i class="bi bi-caret-right-fill"></i>
+        </button>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll("header nav a");
+
+        // Function to check which section is in the viewport
+        function activateLinkOnScroll() {
+          const sections = document.querySelectorAll("section");
+          let currentSectionId = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (
+              window.scrollY >= sectionTop - 50 && // Add a margin to activate slightly earlier
+              window.scrollY < sectionTop + sectionHeight - 50
+            ) {
+              currentSectionId = section.getAttribute("id");
+            }
+          });
+
+          // Remove active class from all nav links
+          navLinks.forEach((link) => {
+            const target = link.getAttribute("data-target");
+            if (target === currentSectionId) {
+              link.classList.add("active");
+            } else {
+              link.classList.remove("active");
+            }
+          });
+        }
+
+        // Listen to the scroll event
+        window.addEventListener("scroll", activateLinkOnScroll);
+
+        // Run on page load to set the correct active link
+        activateLinkOnScroll();
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const nextButton = document
+          .querySelector(".bi-caret-right-fill")
+          .closest("button");
+        const prevButton = document
+          .querySelector(".bi-caret-left-fill")
+          .closest("button");
+        const cards = [
+          document.getElementById("card-wukong"),
+          document.getElementById("card-bajie"),
+          document.getElementById("card-violet"),
+        ];
+        let currentCardIndex = 0;
+
+        // Function to show the card based on index
+        function showCard(index) {
+          cards.forEach((card, i) => {
+            if (i === index) {
+              card.classList.remove("hidden");
+              card.style.opacity = 1; // Fade-in effect
+            } else {
+              card.classList.add("hidden");
+              card.style.opacity = 0; // Fade-out effect
+            }
+          });
+        }
+
+        // Show next card when clicking the next button
+        nextButton.addEventListener("click", function () {
+          currentCardIndex = (currentCardIndex + 1) % cards.length; // Move to the next card in the array
+          showCard(currentCardIndex);
+        });
+
+        // Show previous card when clicking the previous button
+        prevButton.addEventListener("click", function () {
+          currentCardIndex =
+            (currentCardIndex - 1 + cards.length) % cards.length; // Move to the previous card in the array
+          showCard(currentCardIndex);
+        });
+      });
+      window.addEventListener("DOMContentLoaded", function () {
+        const layer = document.querySelector(".layer");
+        const section2OffsetTop = document.querySelector(".section2").offsetTop;
+        const backgroundMusic = document.getElementById("background-music");
+
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            // Pause the music when the tab is not active
+            backgroundMusic.pause();
+          } else {
+            // Play the music when the tab is active again
+            backgroundMusic.play();
+          }
+        });
+        // Cek status layer di localStorage
+        let layerHidden = localStorage.getItem("layerHidden");
+        const lastScrollY = localStorage.getItem("lastScrollY");
+
+        // Jika posisi scroll terakhir di section 2, sembunyikan layer
+        if (lastScrollY && parseInt(lastScrollY) >= section2OffsetTop) {
+          layer.classList.add("hidden");
+        } else if (layerHidden === "true") {
+          layer.classList.add("hidden");
+        }
+
+        window.addEventListener("scroll", function () {
+          const scrollY = window.scrollY;
+          const windowHeight = window.innerHeight;
+
+          // Simpan posisi scroll terakhir ke localStorage
+          localStorage.setItem("lastScrollY", scrollY);
+
+          // Menggerakkan layer ke kanan berdasarkan posisi scroll
+          if (scrollY < windowHeight && layerHidden !== "true") {
+            const moveX = scrollY * 1.5; // Geser layer lebih cepat
+            layer.style.transform = `translateX(${moveX}px)`;
+
+            // Kurangi opacity layer secara bertahap
+            const opacity = 1 - scrollY / windowHeight;
+            layer.style.opacity = opacity;
+
+            // Jika layer sudah tidak terlihat, sembunyikan layer
+            if (opacity <= 0) {
+              layer.classList.add("hidden");
+              localStorage.setItem("layerHidden", "true"); // Simpan status layer tersembunyi
+            }
+          }
+
+          // Tampilkan layer kembali jika pengguna scroll ke posisi paling atas
+          if (scrollY === 0) {
+            layer.classList.remove("hidden");
+            layer.style.transform = "translateX(0)"; // Reset posisi layer
+            layer.style.opacity = 1; // Reset opacity
+            localStorage.setItem("layerHidden", "false"); // Reset status layer
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
